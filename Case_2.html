@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <title>Exercise 2</title>
+
+    <style>
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section {
+
+            margin: 100px;
+            min-height: 50vh;
+            width: 60%;
+
+            display: grid;
+            grid-template-columns: repeat(6 , 1fr);
+            grid-template-rows: repeat(3 , 1fr);
+            gap: 20px;
+            justify-items: center;
+
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 8px;
+            border-radius: 2%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        /* Color each div */
+        section > div:first-child {
+            background: #4CAF50;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        section > div:nth-child(2) {
+            background: red;
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        section > div:nth-child(3) {
+            background: blue;
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        section > div:nth-child(4) {
+            background: purple;
+            grid-column: 4;
+            grid-row: 2;
+        }
+
+        section > div:nth-child(5) {
+            background: pink;
+            grid-column: 5;
+            grid-row: 2;
+        }
+
+        section > div:nth-child(6) {
+            background: #999999;
+            grid-column: 6;
+            grid-row: 3;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<section>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</section>
+
+
+<!-- Add jQuery CDN -->
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        let colors = ["#4CAF50", "red", "blue", "purple", "pink", "#999999"];
+
+        setInterval(() => {
+            let lastColor = colors.pop(); // Remove the last color
+            colors.unshift(lastColor);    // Insert it at the beginning
+
+            // Update each div's background color using jQuery
+            $('section div').each(function(index) {
+                $(this).css("background-color", colors[index]);
+            });
+
+        }, 3000);
+    });
+</script>
+
+</body>
+</html>
